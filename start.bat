@@ -27,7 +27,7 @@ if not exist ".env" (
 )
 
 echo Instaliram PHP zavisnosti...
-composer install --no-scripts --no-plugins --no-autoloader
+composer install --no-autoloader
 composer dump-autoload
 
 echo Generisanje aplikativnog kljuca...
