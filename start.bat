@@ -17,6 +17,12 @@ if %errorlevel% neq 0 (
     exit /b
 )
 
+echo Instaliram PHP zavisnosti...
+composer install
+
+echo Instaliram frontend zavisnosti...
+npm install
+
 echo Proveravam .env fajl...
 if not exist ".env" (
     echo Kreiranje .env fajla...
@@ -26,18 +32,11 @@ if not exist ".env" (
     echo .env fajl vec postoji
 )
 
-echo Instaliram PHP zavisnosti...
-composer install --no-autoloader
-composer dump-autoload
+echo Pokrecem migracije...
+php artisan migrate --seed
 
 echo Generisanje aplikativnog kljuca...
 php artisan key:generate
-
-echo Instaliram frontend zavisnosti...
-npm install
-
-echo Pokrecem migracije...
-php artisan migrate --seed
 
 start cmd /k "php artisan serve"
 start cmd /k "npm run dev"
