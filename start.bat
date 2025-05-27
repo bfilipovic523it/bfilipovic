@@ -3,9 +3,9 @@
 title Pokretanje Laravel Projekta
 color 0a
 echo.
-echo #############################################
-echo #         POKRETANJE LARAVEL PROJEKTA       #
-echo #############################################
+echo #################################################
+echo #      BOGDAN FILIPOVIC IT 5/23 PWA PROJEKAT    #
+echo #################################################
 echo.
 
 echo Proveravam Composer...
@@ -27,30 +27,18 @@ if not exist ".env" (
 )
 
 echo Instaliram PHP zavisnosti...
-composer install --no-interaction
+composer install
 
 echo Generisanje aplikativnog kljuca...
 php artisan key:generate
 
 echo Instaliram frontend zavisnosti...
 npm install
-npm run dev
 
 echo Pokrecem migracije...
 php artisan migrate --seed
 
-echo Pokrecem servise...
-start "" "http://localhost:8000/"
-php artisan serve
-
-echo.
-echo #############################################
-echo #    APLIKACIJA JE USPESNO POKRENUTA!      #
-echo #                                           #
-echo #   Server: http://localhost:8000/           #
-echo #                                           #
-echo #   Pritisnite bilo koji taster za izlaz... #
-echo #############################################
-echo.
+start cmd /k "php artisan serve"
+start cmd /k "npm run dev"
 
 pause
